@@ -1,0 +1,14 @@
+<h1>Books</h1>
+
+<% @books.each do |book| %>
+
+  <p>Title</p>
+  <span><%= link_to book.title, "/books/#{book.id}" %></span>
+
+  <p>Opinion</p>
+  <span><%= book.body %></span>
+
+<% end %>
+
+<!--新規投稿の部分テンプレート-->
+<%= render 'books/new', book:@book %>

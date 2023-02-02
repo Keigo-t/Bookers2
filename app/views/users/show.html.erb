@@ -1,0 +1,20 @@
+<%= render 'books/user', user:@user %>
+
+<% if @user == current_user %>
+    <p><%= link_to "プロフィール編集用", edit_user_path(@user) %></p>
+<% end %>
+
+
+<h1>Books</h1>
+
+<% @books.each do |book| %>
+
+<h2>Title</h2>
+<p><%= book.title %></p>
+
+<h2>Opinion</h2>
+<p><%= book.body %></p>
+<% end %>
+
+<!--新規投稿の部分テンプレート-->
+<%= render 'books/new', book:@book %>

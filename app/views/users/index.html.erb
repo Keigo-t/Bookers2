@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<% @users.each do |user| %>
+  <p>image</p>
+
+  <p>name</p>
+  <span><%= user.name %></span>
+  <br><%= link_to "Show", "/users/#{user.id}" %>
+
+<% end %>
+
+<!--新規投稿の部分テンプレート-->
+<%= render 'books/new', book:@book %>

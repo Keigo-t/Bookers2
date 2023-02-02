@@ -1,0 +1,15 @@
+<h1>Book detail</h1>
+
+<h2>Title</h2>
+<p><%= @book.title %></p>
+
+<h2>Opinion</h2>
+<p><%= @book.body %></p>
+
+<% if @book.user == current_user %>
+  <%= link_to "Edit", edit_book_path(@book.id) %><br>
+  <%= link_to "Destroy", book_path(@book), method: :delete %>
+<% end %>
+
+<!--新規投稿の部分テンプレート-->
+<%= render 'books/new', book:@book %>
