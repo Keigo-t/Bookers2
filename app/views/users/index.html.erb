@@ -1,13 +1,33 @@
-<h1>Users</h1>
+<br><div class="container">
+  <div class="row">
+    <div class="col-sm-2" style="background-color: white;">
+      <h2>Users</h2>
+    </div>
+    <div class="col-sm-2">
+      <table class="table table-striped">
+        <% @users.each do |user| %>
+        <thead>
+          <tr>
+            <th></th>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<% @users.each do |user| %>
-  <p>image</p>
-
-  <p>name</p>
-  <span><%= user.name %></span>
-  <br><%= link_to "Show", "/users/#{user.id}" %>
-
-<% end %>
+        <tbody>
+          <tr>
+            <td></td><!--<td><%= image_tag user.get_profile_image(100,100) %></td>-->
+            <td><%= user.name %></td>
+            <td><%= link_to "Show", "/users/#{user.id}" %></td>
+          </tr>
+        </tbody>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 
 <!--新規投稿の部分テンプレート-->
 <%= render 'books/new', book:@book %>

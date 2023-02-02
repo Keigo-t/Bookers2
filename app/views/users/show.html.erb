@@ -1,20 +1,32 @@
 <%= render 'books/user', user:@user %>
 
-<% if @user == current_user %>
-    <p><%= link_to "プロフィール編集用", edit_user_path(@user) %></p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8" style="background-color: white;">
+       <h1>Books</h1>
+    </div>
+    <div class="col-lg-8">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-
-<h1>Books</h1>
-
-<% @books.each do |book| %>
-
-<h2>Title</h2>
-<p><%= book.title %></p>
-
-<h2>Opinion</h2>
-<p><%= book.body %></p>
-<% end %>
+        <tbody>
+          <% @books.each do |book| %>
+          <tr>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
+          </tr>
+          <% end %>
+         </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <!--新規投稿の部分テンプレート-->
 <%= render 'books/new', book:@book %>
