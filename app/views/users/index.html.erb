@@ -1,3 +1,6 @@
+<!--ユーザー情報の部分テンプレート-->
+<%= render 'books/user', user:@user %>
+
 <br><div class="container">
   <div class="row">
     <div class="col-sm-2" style="background-color: white;">
@@ -18,7 +21,7 @@
 
         <tbody>
           <tr>
-            <td></td><!--<td><%= image_tag user.get_profile_image(100,100) %></td>-->
+            <td><%= image_tag user.get_profile_image(100, 100) %></td>
             <td><%= user.name %></td>
             <td><%= link_to "Show", "/users/#{user.id}" %></td>
           </tr>
