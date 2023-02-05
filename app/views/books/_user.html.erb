@@ -1,24 +1,18 @@
-<br><div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <h2>User info</h2>
-      <%= image_tag user.get_profile_image(100, 100) %>
-         <table class="table">
-           <tbody>
-             <tr>
-               <th>name</th>
-               <th><%= user.name %></th>
-             </tr>
-             <tr>
-               <th>introduction</th>
-               <th><%= user.introduction %></th>
-             </tr>
-           </tbody>
-         </table>
-    </div>
-  </div>
-</div>
+<h2>User info</h2>
+  <%= image_tag user.get_profile_image(100, 100) %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>name</th>
+          <th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= user.introduction %></th>
+        </tr>
+      </tbody>
+    </table>
 
-<% if user == current_user %>
-    <%= link_to "プロフィール編集用", edit_user_path(user) %>
-<% end %>
+    <% if user == current_user %>
+      <%= link_to "プロフィール編集用", edit_user_path(user) %>
+    <% end %>

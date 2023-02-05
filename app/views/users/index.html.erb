@@ -1,36 +1,37 @@
-<!--ユーザー情報の部分テンプレート-->
-<%= render 'books/user', user:@user %>
-
-<br><div class="container">
+<div class="container">
   <div class="row">
-    <div class="col-sm-2" style="background-color: white;">
-      <h2>Users</h2>
-    </div>
-    <div class="col-sm-2">
-      <table class="table table-striped">
-        <% @users.each do |user| %>
-        <thead>
-          <tr>
-            <th></th>
-            <th>image</th>
-            <th>name</th>
-            <th></th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
+    <div class="col-md-3">
+      <!--ユーザー情報の部分テンプレート-->
+      <%= render 'books/user', user:@user %>
 
-        <tbody>
-          <tr>
-            <td><%= image_tag user.get_profile_image(100, 100) %></td>
-            <td><%= user.name %></td>
-            <td><%= link_to "Show", "/users/#{user.id}" %></td>
-          </tr>
-        </tbody>
-      <% end %>
+      <!--新規投稿の部分テンプレート-->
+      <%= render 'books/new', book:@book %>
+    </div>
+
+    <div class="offset-md-1 col-md-8" style="background-color: white;">
+      <table class="table table-striped">
+        <h2>Users</h2>
+
+          <% @users.each do |user| %>
+            <thead>
+              <tr>
+                <th></th>
+                <th>image</th>
+                <th>name</th>
+                <th></th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><%= image_tag user.get_profile_image(100, 100) %></td>
+                <td><%= user.name %></td>
+                <td><%= link_to "Show", "/users/#{user.id}" %></td>
+              </tr>
+            </tbody>
+          <% end %>
       </table>
     </div>
   </div>
 </div>
-
-<!--新規投稿の部分テンプレート-->
-<%= render 'books/new', book:@book %>

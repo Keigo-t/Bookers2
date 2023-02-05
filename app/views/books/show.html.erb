@@ -1,18 +1,29 @@
-<!--ユーザー情報の部分テンプレート-->
-<%= render 'books/user', user:@user %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
 
-<h1>Book detail</h1>
+      <!--ユーザー情報の部分テンプレート-->
+      <%= render 'books/user', user:@user %>
 
-<h2>Title</h2>
-<p><%= @book.title %></p>
+      <!--新規投稿の部分テンプレート-->
+      <%= render 'books/new', book:@book %>
+    </div>
 
-<h2>Opinion</h2>
-<p><%= @book.body %></p>
-
-<% if @book.user == current_user %>
-  <%= link_to "Edit", edit_book_path(@book.id) %><br>
-  <%= link_to "Destroy", book_path(@book), method: :delete %>
-<% end %>
-
-<!--新規投稿の部分テンプレート-->
-<%= render 'books/new', book:@book %>
+    <div class="offset-md-1 col-md-8" style="background-color: white;">
+      <table class="table table-striped">
+        <h2>Book detail</h2>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th><%= @book.title %></th>
+                <th><%= @book.body %></th>
+                <% if @book.user == current_user %>
+                  <th><%= link_to "Edit", edit_book_path(@book.id) %></th>
+                  <th><%= link_to "Destroy", book_path(@book), method: :delete %></th>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
+</div>
