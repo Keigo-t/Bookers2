@@ -1,9 +1,5 @@
 class BooksController < ApplicationController
   def new
-    user_id = params[:id].to_i
-    unless user_id == current_user.id
-      redirect_to new_user_session_path
-    end
     @book = Book.new
   end
 
@@ -21,10 +17,6 @@ class BooksController < ApplicationController
   end
 
   def index
-    user_id = params[:id].to_i
-    unless user_id == current_user.id
-      redirect_to new_user_session_path
-    end
     @books = Book.all
     @user = current_user
     @book = Book.new
@@ -32,28 +24,28 @@ class BooksController < ApplicationController
   end
 
   def show
-    user_id = params[:id].to_i
-    unless user_id == current_user.id
-      redirect_to new_user_session_path
-    end
     @book = Book.find(params[:id])
     @user = current_user
+    @newbook = Book.new
   end
 
   def edit
-    user_id = params[:id].to_i
-    unless user_id == current_user.id
-      redirect_to new_user_session_path
-    end
     @book = Book.find(params[:id])
+    @user = current_user
+    user_id = @book.user.id
+    unless user_id == current_user.id
+      redirect_to books_path
+    else
+      render :edit
+    end
   end
 
   def update
-    user_id = params[:id].to_i
-    unless user_id == current_user.id
-      redirect_to new_user_session_path
-    end
     @book = Book.find(params[:id])
+    user_id = @book.user.id
+    unless user_id == current_user.id
+      redirect_to books_path
+    end
     if @book.update(book_params)
       flash[:notice] = "It was successfully updated."
       redirect_to book_path(@book.id)
@@ -62,7 +54,6 @@ class BooksController < ApplicationController
       @user = current_user
       render :edit
     end
-
   end
 
   def destroy
