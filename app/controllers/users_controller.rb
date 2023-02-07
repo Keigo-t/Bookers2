@@ -6,20 +6,21 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # user_id = params[:id].to_i
-    # unless user_id == current_user.id
-    #   redirect_to users_path
-    # end
+    @book = Book.find(params[:id])
     @user = User.find(params[:id])
+    user_id = @book.user.id
+    unless user_id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def update
-    user_id = params[:id].to_i
-    unless user_id == current_user.id
-      redirect_to new_user_session_path
-    end
     @book = Book.find(params[:id])
     @user = User.find(params[:id])
+    user_id = @book.user.id
+    unless user_id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
       redirect_to user_path(@user.id)
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
     @users = User.all
     @user = current_user
     @book = Book.new
+    @books = @user.books
   end
 
    private

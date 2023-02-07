@@ -20,7 +20,7 @@
                 <th>
                   <%= link_to user_path(@user.id) do %>
                   <%= image_tag @book.user.get_profile_image(100, 100) %><br>
-                  <%= link_to @user.name %>
+                  <%= link_to @book.user.name %>
                   <% end %>
                 </th>
                 <th><%= link_to @book.title, book_path(@book.id) %></th>
