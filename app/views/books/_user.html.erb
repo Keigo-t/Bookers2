@@ -14,6 +14,7 @@
     </table>
 
     <% if user == current_user %>
-      <!--<i class="fas.fa-user-cog"></i>-->
-      <%= link_to "プロフ編集", edit_user_path(user) %>
+      <%= link_to edit_user_path(user) do %>
+      <i class="fas fa-user-cog"></i>
+      <% end %>
     <% end %>

@@ -17,7 +17,13 @@
           <table class="table">
             <tbody>
               <tr>
-                <th><%= @book.title %></th>
+                <th>
+                  <%= link_to user_path(@user.id) do %>
+                  <%= image_tag @book.user.get_profile_image(100, 100) %><br>
+                  <%= link_to @user.name %>
+                  <% end %>
+                </th>
+                <th><%= link_to @book.title, book_path(@book.id) %></th>
                 <th><%= @book.body %></th>
                 <% if @book.user == current_user %>
                   <th><%= link_to "Edit", edit_book_path(@book.id) %></th>
