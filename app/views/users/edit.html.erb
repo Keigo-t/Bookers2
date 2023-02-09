@@ -13,7 +13,7 @@
   </ul>
 <% end %>
 
-<%= form_with model: @user do |f| %>
+<%= form_with model: @user, url:user_path(@user.id), method: :patch do |f| %>
   <label for="inputName">Name</label><br>
   <%= f.text_field :name %><br>
   <label for="inputImage">Image</label><br>
